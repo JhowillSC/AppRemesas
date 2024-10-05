@@ -70,7 +70,16 @@ namespace AppRemesas.Controllers
             return View("Index", viewModel);
         }
 
-      
+        public IActionResult Lista()
+        {
+            var misTransacciones= _context.Transacciones.ToList(); 
+            var viewModel = new TransaccionesViewModel
+            {
+                ListTransacciones = misTransacciones
+            };
+
+            return View(viewModel);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
