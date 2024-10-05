@@ -1,17 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using AppRemesas.Data;
+using AppRemesas.Services; // Asegúrate de agregar este espacio de nombres
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
-// Add services to the container.
-/* var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter(); */
 
-//posgres
-var connectionString = builder.Configuration.GetConnectionString("PosgreConnection") ?? throw new InvalidOperationException("Connection string 'PosgreConnection' not found.");
+// Configuración de conexión a PostgreSQL
+var connectionString = builder.Configuration.GetConnectionString("PosgreConnection") 
+    ?? throw new InvalidOperationException("Connection string 'PosgreConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -19,6 +15,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+// Registrar el servicio para la conversión de moneda
+builder.Services.AddHttpClient<CurrencyConversionService>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -31,7 +31,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
