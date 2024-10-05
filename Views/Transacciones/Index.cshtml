@@ -1,0 +1,75 @@
+@model AppRemesas.ViewModel.TransaccionesViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h1 style="text-align: center;">Registrar Remesas</h1>
+
+<form asp-controller="Transacciones" asp-action="Registrar" method="post">
+    <div class="form-group">
+        <label asp-for="FormTransacciones.NombreRemitente" class="control-label"></label>
+        <input asp-for="FormTransacciones.NombreRemitente" class="form-control" />
+        <span asp-validation-for="FormTransacciones.NombreRemitente" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="FormTransacciones.NombreDestinatario" class="control-label"></label>
+        <input asp-for="FormTransacciones.NombreDestinatario" class="form-control" />
+        <span asp-validation-for="FormTransacciones.NombreDestinatario" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.PaisOrigen" class="control-label"></label>
+        <input asp-for="FormTransacciones.PaisOrigen" class="form-control" />
+        <span asp-validation-for="FormTransacciones.PaisOrigen" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.PaisDestino" class="control-label"></label>
+        <input asp-for="FormTransacciones.PaisDestino" class="form-control" />
+        <span asp-validation-for="FormTransacciones.PaisDestino" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.MontoEnviado" class="control-label"></label>
+        <input asp-for="FormTransacciones.MontoEnviado" class="form-control" />
+        <span asp-validation-for="FormTransacciones.MontoEnviado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.Moneda" class="control-label"></label>
+        <input asp-for="FormTransacciones.Moneda" class="form-control" />
+        <span asp-validation-for="FormTransacciones.Moneda" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.TasaCambio" class="control-label"></label>
+        <input asp-for="FormTransacciones.TasaCambio" class="form-control" />
+        <span asp-validation-for="FormTransacciones.TasaCambio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.MontoFinal" class="control-label"></label>
+        <input asp-for="FormTransacciones.MontoFinal" class="form-control" />
+        <span asp-validation-for="FormTransacciones.MontoFinal" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.Estado" class="control-label"></label>
+        <input asp-for="FormTransacciones.Estado" class="form-control" />
+        <span asp-validation-for="FormTransacciones.Estado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FormTransacciones.FechaTransaccion" class="control-label"></label>
+        <input asp-for="FormTransacciones.FechaTransaccion" type="date" class="form-control" />
+        <span asp-validation-for="FormTransacciones.FechaTransaccion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+</form>
+
+<h3 class="title-jhowill">@ViewData["Message"]</h3>
