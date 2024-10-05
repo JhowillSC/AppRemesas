@@ -39,7 +39,11 @@
 
     <div class="form-group">
         <label asp-for="FormTransacciones.Moneda" class="control-label"></label>
-        <input asp-for="FormTransacciones.Moneda" class="form-control" />
+        <select asp-for="FormTransacciones.Moneda" class="form-control">
+            <option value="">Seleccione una moneda</option>
+            <option value="USD">USD</option>
+            <option value="BTC">BTC</option>
+        </select>
         <span asp-validation-for="FormTransacciones.Moneda" class="text-danger"></span>
     </div>
 
@@ -57,7 +61,13 @@
 
     <div class="form-group">
         <label asp-for="FormTransacciones.Estado" class="control-label"></label>
-        <input asp-for="FormTransacciones.Estado" class="form-control" />
+        <select asp-for="FormTransacciones.Estado" class="form-control">
+            <option value="">Seleccione un estado</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Completo">Completo</option>
+            <option value="Cancelado">Cancelado</option>
+            <option value="En Proceso">En Proceso</option>
+        </select>
         <span asp-validation-for="FormTransacciones.Estado" class="text-danger"></span>
     </div>
 
